@@ -11,36 +11,42 @@ import { SpeechRecognitionService } from './speech-recognition.service';
 
 //Components
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/index';
+// import { LoginComponent } from './login/index';
 import { MainComponent } from './main/main.component';
 import { SignupComponent } from './signup/signup.component';
 import { PostComponent } from './post/post.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ProfileComponent } from './profile/profile.component';
 import { LanguageComponent } from './language/language.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { ChatComponent } from './chat/chat.component';
 //import { BootstrapCompComponent } from './bootstrap-comp/bootstrap-comp.component';
 
 const appRoutes: Routes = [
   { path: 'signup', component: SignupComponent },
-  { path: 'login',  component: LoginComponent },
+  { path: 'login',  component: NavbarComponent },
   {path:'main', component:MainComponent},
   {path:'post', component:PostComponent},
   {path:'navbar', component:NavbarComponent},
   {path:'profile', component:ProfileComponent},
-  {path:'language', component:LanguageComponent}
+  {path:'language', component:LanguageComponent},
+  {path:'Userprofile', component:UserProfileComponent},
+  {path:'Chat', component:ChatComponent}
 
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
+    // LoginComponent,
     MainComponent,
     SignupComponent,
     PostComponent,
     NavbarComponent,
     ProfileComponent,
     LanguageComponent,
+    UserProfileComponent,
+    ChatComponent,
   //  BootstrapCompComponent
   ],
   imports: [

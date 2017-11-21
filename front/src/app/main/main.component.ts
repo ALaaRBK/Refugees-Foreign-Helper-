@@ -14,52 +14,46 @@ declare var $ :any;
 
 
 export class MainComponent implements OnInit {
-	posts;
+  constructor(private http : Http) {}
+  posts;
   comment;
   comments;
   id;
   comID;
   flag;
+
+
   ngOnInit() {
-  	//setInterval(() => {
-     let headers = new Headers();
-   headers.append('Content-Type', 'application/json');
-    return this.http.get('/main',{headers: headers})
-    .map((res) => {
-      if(res){
-         this.posts = res.json();
-         console.log(this.posts)
-      // console.log("response from post",res.json());
-      }else{
-        
-      }
-    }).subscribe();
- // }, 5000);
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      return this.http.get('/main',{headers: headers})
+      .map((res) => {
+        if(res){
+          this.posts = res.json();
+          console.log(this.posts)
+        }
+      }).subscribe();
+    }
+
+    commentFun(postIndex,roomId){
+      this.comment=$("#"+postIndex).val();
+      this.id=roomId;
+      this.comID=postIndex;
+      console.log(this.comment)
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      return this.http.post('/postcomment',{commet:this.comment,roomid:this.id},{headers: headers})
+      .map((res) => {
+        if(res){
+          this.comments=res.json()
+
+        }else{
+
+        }
+      }).subscribe(); 
+    }
+
   }
-
-  commentFun(postIndex,roomId){
-    this.comment=$("#"+postIndex).val();
-    this.id=roomId;
-    this.comID=postIndex;
-    console.log(this.comment)
-    let headers = new Headers();
-   headers.append('Content-Type', 'application/json');
-    return this.http.post('/postcomment',{commet:this.comment,roomid:this.id},{headers: headers})
-    .map((res) => {
-      if(res){
-        this.comments=res.json()
-        
-      }else{
-        
-      }
-    }).subscribe(); 
-  }
-  constructor(private http : Http) {}
-
-
-
-
-}
 
 
 
